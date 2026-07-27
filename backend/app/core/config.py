@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     QDRANT_PORT: int = 6333
 
     # AI API Keys
-    GEMINI_API_KEY: str = "GEMINI_API_KEY"
+    GEMINI_API_KEY: str = Field(default="", validation_alias="GEMINI_API_KEY")
 
     # JWT Security Settings
     SECRET_KEY: str = "super_secret_jwt_key_change_in_production"

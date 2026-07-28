@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 API_BASE = "https://enterprise-rag-backend-xlc8.onrender.com"
-QUERY_URL = f"{API_BASE}/api/v1/documents/query"  # Fixed: Added /api/v1 to resolve 404 error
+QUERY_URL = f"{API_BASE}/api/v1/documents/query" # Fixed: Added /api/v1 to resolve 404 error
 
 # ==========================================
 # LUXURY CINEMATIC CSS

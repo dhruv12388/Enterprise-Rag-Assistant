@@ -10,7 +10,7 @@ def query_rag_pipeline(user_query: str, top_k: int = 4) -> str:
     """
     try:
         response = client.models.generate_content(
-            model='gemini-2.5-flash',  # Ensure you use a supported active model tag
+            model='gemini-1.5-flash',  # Updated to an active supported model
             contents=f"Answer this query accurately based on your knowledge base (retrieve up to {top_k} results): {user_query}"
         )
         return response.text

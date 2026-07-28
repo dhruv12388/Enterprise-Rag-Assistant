@@ -13,8 +13,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-API_BASE = "https://nexus-ai-1-7ff9.onrender.com"
+API_BASE = " https://enterprise-rag-backend-xlc8.onrender.com"
 QUERY_URL = f"{API_BASE}/documents/query"
+ 
 
 # ==========================================
 # LUXURY CINEMATIC CSS

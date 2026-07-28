@@ -1,19 +1,35 @@
 from google import genai
 from app.config import settings
 
-# Initialize the Gemini client explicitly using your settings API key
+# Initialize Gemini client
 client = genai.Client(api_key=settings.GEMINI_API_KEY)
+
 
 def query_rag_pipeline(user_query: str, top_k: int = 4) -> str:
     """
-    Executes the RAG pipeline query using the Google GenAI SDK.
+    Executes the RAG pipeline using Gemini.
+    (Currently this is only an LLM call. Retrieval from Qdrant should be added later.)
     """
     try:
+        prompt = f"""
+You are an Enterprise AI Assistant.
+
+Answer the following question as accurately as possible.
+
+Question:
+{user_query}
+"""
+
         response = client.models.generate_content(
-            model='gemini-1.5-flash',  # Updated to an active supported model
-            contents=f"Answer this query accurately based on your knowledge base (retrieve up to {top_k} results): {user_query}"
+            model="gemini-2.5-flash",
+            contents=prompt,
         )
-        return response.text
+
+        if response.text:
+            return response.text
+
+        return "No response generated."
+
     except Exception as e:
-        print(f"Error executing RAG pipeline with Gemini: {e}")
-        raise e
+        print(f"Gemini Error: {e}")
+        raise Exception(str(e))
